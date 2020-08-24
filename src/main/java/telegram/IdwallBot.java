@@ -50,14 +50,14 @@ public class IdwallBot extends TelegramLongPollingBot {
             Elements comments = doc.select("a.bylink.comments");
 
             for (int i = 0; i < subreddit.size(); i++) {
-                String msg = score.get(i).text() + " | " + subreddit.get(i).text() + " | " + title.get(i).text() + "\n";
+                String message = score.get(i).text() + " | " + subreddit.get(i).text() + " | " + title.get(i).text() + "\n";
                 if (title.get(i).attr("href").charAt(0) == '/')
-                    msg = msg + "https://old.reddit.com" + title.get(i).attr("href") + "\n";
+                    message = message + "https://old.reddit.com" + title.get(i).attr("href") + "\n";
                 else
-                    msg = msg + title.get(i).attr("href") + "\n";
-                msg = msg + comments.get(i).attr("href");
+                    message = message + title.get(i).attr("href") + "\n";
+                message = message + comments.get(i).attr("href");
 
-                this.sendMessage(update.getMessage().getChatId(), msg);
+                this.sendMessage(update.getMessage().getChatId(), message);
             }
 
 
@@ -81,14 +81,14 @@ public class IdwallBot extends TelegramLongPollingBot {
 
             for (int i = 0; i < subreddit.size(); i++) {
                 if (subs.contains(subreddit.get(i).text().split("/")[1].toLowerCase())) {
-                    String msg = score.get(i).text() + " | " + subreddit.get(i).text() + " | " + title.get(i).text() + "\n";
+                    String message = score.get(i).text() + " | " + subreddit.get(i).text() + " | " + title.get(i).text() + "\n";
                     if (title.get(i).attr("href").charAt(0) == '/')
-                        msg = msg + "https://old.reddit.com" + title.get(i).attr("href") + "\n";
+                        message = message + "https://old.reddit.com" + title.get(i).attr("href") + "\n";
                     else
-                        msg = msg + title.get(i).attr("href") + "\n";
-                    msg = msg + comments.get(i).attr("href");
+                        message = message + title.get(i).attr("href") + "\n";
+                    message = message + comments.get(i).attr("href");
 
-                    this.sendMessage(update.getMessage().getChatId(), msg);
+                    this.sendMessage(update.getMessage().getChatId(), message);
                 }
             }
         } catch (IOException e) {
@@ -97,25 +97,12 @@ public class IdwallBot extends TelegramLongPollingBot {
     }
 
     public void usageMessage(Update update) {
-        SendMessage message = new SendMessage()
-                .setChatId(update.getMessage().getChatId())
-                .setText("Comandos disponíveis:\n\n/NadaPraFazer\n/NadaPraFazer sub\n/NadaPraFazer sub1;sub2\n/AboutMe");
-        try {
-            execute(message);
-        } catch (TelegramApiException e) {
-            e.printStackTrace();
-        }
+        this.sendMessage(update.getMessage().getChatId(), "Comandos disponíveis:\n\n/NadaPraFazer\n/NadaPraFazer sub\n/NadaPraFazer subreddit1;subreddit2\n/AboutMe");
+
     }
 
     public void aboutMessage(Update update) {
-        SendMessage message = new SendMessage()
-                .setChatId(update.getMessage().getChatId())
-                .setText("https://www.linkedin.com/in/renata89abreu/\nhttps://github.com/rabreu/");
-        try {
-            execute(message);
-        } catch (TelegramApiException e) {
-            e.printStackTrace();
-        }
+        this.sendMessage(update.getMessage().getChatId(), "https://www.linkedin.com/in/renata89abreu/\nhttps://github.com/rabreu/");
     }
 
     public void sendMessage(Long chatId, String msg) {
