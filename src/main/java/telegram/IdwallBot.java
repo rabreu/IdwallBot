@@ -40,60 +40,48 @@ public class IdwallBot extends TelegramLongPollingBot {
         return BotConfig.BOT_TOKEN;
     }
 
+//    public void NadaPraFazer(Update update) {
+//        final String REDDIT_URL = "https://old.reddit.com/";
+//        try {
+//            Document doc = Jsoup.connect(REDDIT_URL).get();
+//            Elements score = doc.select("div.score.likes");
+//            Elements subreddit = doc.select("a.subreddit.hover.may-blank");
+//            Elements title = doc.select("a.title.may-blank");
+//            Elements comments = doc.select("a.bylink.comments");
+//
+//            for (int i = 0; i < subreddit.size(); i++) {
+//                String message = score.get(i).text() + " | " + subreddit.get(i).text() + " | " + title.get(i).text() + "\n";
+//                if (title.get(i).attr("href").charAt(0) == '/')
+//                    message = message + "https://old.reddit.com" + title.get(i).attr("href") + "\n";
+//                else
+//                    message = message + title.get(i).attr("href") + "\n";
+//                message = message + comments.get(i).attr("href");
+//
+//                this.sendMessage(update.getMessage().getChatId(), message);
+//            }
+//
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
     public void NadaPraFazer(Update update) {
-        final String REDDIT_URL = "https://old.reddit.com/";
-        try {
-            Document doc = Jsoup.connect(REDDIT_URL).get();
-            Elements score = doc.select("div.score.likes");
-            Elements subreddit = doc.select("a.subreddit.hover.may-blank");
-            Elements title = doc.select("a.title.may-blank");
-            Elements comments = doc.select("a.bylink.comments");
+        List<String> subs = new ArrayList<>();
+        RedditCrawler redditCrawler = new RedditCrawler();
+        subs = redditCrawler.craw();
 
-            for (int i = 0; i < subreddit.size(); i++) {
-                String message = score.get(i).text() + " | " + subreddit.get(i).text() + " | " + title.get(i).text() + "\n";
-                if (title.get(i).attr("href").charAt(0) == '/')
-                    message = message + "https://old.reddit.com" + title.get(i).attr("href") + "\n";
-                else
-                    message = message + title.get(i).attr("href") + "\n";
-                message = message + comments.get(i).attr("href");
-
-                this.sendMessage(update.getMessage().getChatId(), message);
-            }
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        for(String sub : subs)
+            this.sendMessage(update.getMessage().getChatId(), sub);
     }
 
     public void NadaPraFazer(Update update, String argsSub) {
-        final String REDDIT_URL = "https://old.reddit.com/";
-        try {
-            Document doc = Jsoup.connect(REDDIT_URL).get();
-            Elements score = doc.select("div.score.likes");
-            Elements subreddit = doc.select("a.subreddit.hover.may-blank");
-            Elements title = doc.select("a.title.may-blank");
-            Elements comments = doc.select("a.bylink.comments");
+        List<String> subs = new ArrayList<>();
+        RedditCrawler redditCrawler = new RedditCrawler();
+        subs = redditCrawler.craw(argsSub);
 
-            List<String> subs = new ArrayList<>();
-            for(int i = 0; i < argsSub.split(";").length ; i++)
-                subs.add(argsSub.split(";")[i].toLowerCase());
-
-            for (int i = 0; i < subreddit.size(); i++) {
-                if (subs.contains(subreddit.get(i).text().split("/")[1].toLowerCase())) {
-                    String message = score.get(i).text() + " | " + subreddit.get(i).text() + " | " + title.get(i).text() + "\n";
-                    if (title.get(i).attr("href").charAt(0) == '/')
-                        message = message + "https://old.reddit.com" + title.get(i).attr("href") + "\n";
-                    else
-                        message = message + title.get(i).attr("href") + "\n";
-                    message = message + comments.get(i).attr("href");
-
-                    this.sendMessage(update.getMessage().getChatId(), message);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        for(String sub : subs)
+            this.sendMessage(update.getMessage().getChatId(), sub);
     }
 
     public void usageMessage(Update update) {
