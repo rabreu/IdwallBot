@@ -20,6 +20,10 @@
                             <mainClass>Main</mainClass>
                             <name>worker</name>
                         </program>
+                        <program>
+                            <mainClass>OneOffProcess</mainClass>
+                            <name>oneoff</name>
+                        </program>
                     </programs>
                 </configuration>
             </plugin>
