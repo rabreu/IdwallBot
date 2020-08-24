@@ -20,12 +20,16 @@
                             <mainClass>Main</mainClass>
                             <name>worker</name>
                         </program>
-                        <program>
-                            <mainClass>OneOffProcess</mainClass>
-                            <name>oneoff</name>
-                        </program>
                     </programs>
                 </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>assemble</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
