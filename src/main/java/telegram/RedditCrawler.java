@@ -28,7 +28,7 @@ public class RedditCrawler {
                     outputSubs.set(i, outputSubs.get(i) + "[thread](" + "https://old.reddit.com" + title.get(i).attr("href") + ")\n");
                 else
                     outputSubs.set(i, outputSubs.get(i) + "[thread](" + title.get(i).attr("href") + ")\n");
-                outputSubs.set(i, outputSubs.get(i) + "[comments] (" + comments.get(i).attr("href") + ")");
+                outputSubs.set(i, outputSubs.get(i) + "[comments](" + comments.get(i).attr("href") + ")");
             }
         } catch (IOException e) {
             e.printStackTrace();
