@@ -55,10 +55,10 @@ public class RedditCrawler {
                     outputSubs.add(score.get(i).text() + " | *" + subreddit.get(i).text() + "* | " + title.get(i).text() + " | ");
                     Integer lastPosition = outputSubs.size()-1;
                     if (title.get(lastPosition).attr("href").charAt(0) == '/')
-                        outputSubs.set(lastPosition, outputSubs.get(i) + "[thread](" + "https://old.reddit.com" + title.get(i).attr("href") + ") | ");
+                        outputSubs.set(lastPosition, outputSubs.get(lastPosition) + "[thread](" + "https://old.reddit.com" + title.get(i).attr("href") + ") | ");
                     else
-                        outputSubs.set(lastPosition, outputSubs.get(i) + "[thread](" + title.get(i).attr("href") + ") | ");
-                    outputSubs.set(lastPosition, outputSubs.get(i) + "[comments](" + comments.get(i).attr("href") + ")");
+                        outputSubs.set(lastPosition, outputSubs.get(lastPosition) + "[thread](" + title.get(i).attr("href") + ") | ");
+                    outputSubs.set(lastPosition, outputSubs.get(lastPosition) + "[comments](" + comments.get(i).attr("href") + ")");
 /*                        outputSubs.set(lastPosition, outputSubs.get(lastPosition) + "https://old.reddit.com" + title.get(lastPosition).attr("href") + "\n");
                     else
                         outputSubs.set(lastPosition, outputSubs.get(lastPosition) + title.get(lastPosition).attr("href") + "\n");
