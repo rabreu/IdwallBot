@@ -65,8 +65,8 @@ public class IdwallBot extends TelegramLongPollingBot {
 
     public void aboutMessage(Update update) {
         this.sendMessage(update.getMessage().getChatId(),
-                "https://www.linkedin.com/in/renata89abreu/\n" +
-                "https://github.com/rabreu/");
+                "[LinkedIn](https://www.linkedin.com/in/renata89abreu/)\n" +
+                "[GitHub](https://github.com/rabreu/)");
     }
 
     public void sendMessage(Long chatId, String msg) {
