@@ -25,10 +25,10 @@ public class RedditCrawler {
             for (int i = 0; i < subreddit.size(); i++) {
                 outputSubs.add(score.get(i).text() + " | " + subreddit.get(i).text() + " | " + title.get(i).text() + "\n");
                 if (title.get(i).attr("href").charAt(0) == '/')
-                    outputSubs.set(i, outputSubs.get(i) + "https://old.reddit.com" + title.get(i).attr("href") + "\n");
+                    outputSubs.set(i, outputSubs.get(i) + "[thread](" + "https://old.reddit.com" + title.get(i).attr("href") + ")\n");
                 else
-                    outputSubs.set(i, outputSubs.get(i) + title.get(i).attr("href") + "\n");
-                outputSubs.set(i, outputSubs.get(i) + comments.get(i).attr("href"));
+                    outputSubs.set(i, outputSubs.get(i) + "[thread](" + title.get(i).attr("href") + ")\n");
+                outputSubs.set(i, outputSubs.get(i) + "[comments] (" + comments.get(i).attr("href") + ")");
             }
         } catch (IOException e) {
             e.printStackTrace();
