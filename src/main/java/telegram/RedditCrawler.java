@@ -23,7 +23,7 @@ public class RedditCrawler {
             Elements comments = doc.select("a.bylink.comments"); // .attr("href");
 
             for (int i = 0; i < subreddit.size(); i++) {
-                outputSubs.add(score.get(i).text() + " | " + subreddit.get(i).text() + " | " + title.get(i).text() + "\n");
+                outputSubs.add(score.get(i).text() + " | *" + subreddit.get(i).text() + "* | " + title.get(i).text() + "\n");
                 if (title.get(i).attr("href").charAt(0) == '/')
                     outputSubs.set(i, outputSubs.get(i) + "[thread](" + "https://old.reddit.com" + title.get(i).attr("href") + ")\n");
                 else
