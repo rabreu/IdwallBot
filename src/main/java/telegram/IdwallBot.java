@@ -58,8 +58,8 @@ public class IdwallBot extends TelegramLongPollingBot {
         this.sendMessage(update.getMessage().getChatId(),
                 "*Comandos*\n" +
                 "/NadaPraFazer\n" +
-                "/NadaPraFazer subreddit\n" +
-                "/NadaPraFazer subreddit1;subreddit2\n" +
+                "/NadaPraFazer __subreddit__\n" +
+                "/NadaPraFazer __subreddit1;subreddit2__\n" +
                 "/AboutMe");
     }
 

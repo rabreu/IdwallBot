@@ -59,10 +59,6 @@ public class RedditCrawler {
                     else
                         outputSubs.set(lastPosition, outputSubs.get(lastPosition) + "[thread](" + title.get(i).attr("href") + ") | ");
                     outputSubs.set(lastPosition, outputSubs.get(lastPosition) + "[comments](" + comments.get(i).attr("href") + ")");
-/*                        outputSubs.set(lastPosition, outputSubs.get(lastPosition) + "https://old.reddit.com" + title.get(lastPosition).attr("href") + "\n");
-                    else
-                        outputSubs.set(lastPosition, outputSubs.get(lastPosition) + title.get(lastPosition).attr("href") + "\n");
-                    outputSubs.set(lastPosition, outputSubs.get(lastPosition) + comments.get(lastPosition).attr("href"));*/
                 }
             }
         } catch (IOException e) {
