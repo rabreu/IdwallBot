@@ -54,7 +54,7 @@ public class RedditCrawler {
                 if (subs.contains(subreddit.get(i).text().split("/")[1].toLowerCase())) {
                     outputSubs.add(score.get(i).text() + " | *" + subreddit.get(i).text() + "* | " + title.get(i).text() + " | ");
                     Integer lastPosition = outputSubs.size()-1;
-                    if (title.get(i).attr("href").charAt(0) == '/')
+                    if (title.get(lastPosition).attr("href").charAt(0) == '/')
                         outputSubs.set(i, outputSubs.get(i) + "[thread](" + "https://old.reddit.com" + title.get(i).attr("href") + ") | ");
                     else
                         outputSubs.set(i, outputSubs.get(i) + "[thread](" + title.get(i).attr("href") + ") | ");
