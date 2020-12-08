@@ -5,7 +5,6 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class IdwallBot extends TelegramLongPollingBot {
@@ -57,16 +56,16 @@ public class IdwallBot extends TelegramLongPollingBot {
     public void usageMessage(Update update) {
         this.sendMessage(update.getMessage().getChatId(),
                 "Olá, eu sou um robô e fui criado porque minha criadora está participando do processo seletivo da Idwall e parte do processo inclui a implementação destes *comandos*:\n\n" +
-                "/NadaPraFazer\n" +
-                "/NadaPraFazer _subreddit_\n" +
-                "/NadaPraFazer _subreddit1;subreddit2_\n" +
-                "/AboutMe");
+                        "/NadaPraFazer\n" +
+                        "/NadaPraFazer _subreddit_\n" +
+                        "/NadaPraFazer _subreddit1;subreddit2_\n" +
+                        "/AboutMe");
     }
 
     public void aboutMessage(Update update) {
         this.sendMessage(update.getMessage().getChatId(),
                 "[LinkedIn](https://www.linkedin.com/in/renata89abreu/)\n" +
-                "[GitHub](https://github.com/rabreu/)");
+                        "[GitHub](https://github.com/rabreu/)");
     }
 
     public void sendMessage(Long chatId, String msg) {
