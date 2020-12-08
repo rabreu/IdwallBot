@@ -15,12 +15,15 @@ public class IdwallBot extends TelegramLongPollingBot {
                 if (update.getMessage().getText().split(" ").length > 1)
                     NadaPraFazer(update, update.getMessage().getText().split(" ")[1]);
                 else
+                    System.out.println("Somebody has nothing to do.");
                     NadaPraFazer(update);
                 break;
             case "/ABOUTME":
+                System.out.println("Somebody wants to know more about me.");
                 aboutMessage(update);
                 break;
             default:
+                System.out.println("Somebody pinged me.");
                 usageMessage(update);
         }
     }
